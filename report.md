@@ -366,14 +366,12 @@ sudo visudo -f /etc/sudoers.d/testadmins
 sudo usermod -aG testadmins testuser
 su - testuser -c 'sudo id'
 sudo gpasswd -d testuser testadmins
-su - testuser -c 'sudo -k; sudo id'
 ```
 
 ### Резервные копии (перед 2.2.33)
 ```bash
 sudo cp -a /etc/login.defs /etc/login.defs.orig
 sudo cp -a /etc/default/useradd /etc/default/useradd.orig
-setdef() { sudo sed -i "/^#\?\s*$1\b/d" /etc/login.defs; echo "$1 $2" | sudo tee -a /etc/login.defs >/dev/null; }
 ```
 
 ### 2.2.33
