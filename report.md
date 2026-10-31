@@ -383,7 +383,7 @@ man login.defs
 ### 2.2.34
 ```bash
 awk -F: '{print $3}' /etc/passwd | sort -n | tail
-setdef UID_MIN 5000
+sudo nano /etc/login.defs UID_MIN 5000
 sudo useradd -m configuser1
 id configuser1
 sudo userdel -r configuser1
@@ -392,8 +392,8 @@ sudo cp -a /etc/login.defs.orig /etc/login.defs
 
 ### 2.2.35
 ```bash
-setdef SYS_UID_MIN 800
-setdef SYS_UID_MAX 850
+sudo nano /etc/login.defs SYS_UID_MIN 800
+sudo nano /etc/login.defs SYS_UID_MAX 850
 sudo useradd -r sysconfig1
 sudo useradd -r sysconfig2
 sudo useradd -r sysconfig3
@@ -408,7 +408,8 @@ sudo cp -a /etc/login.defs.orig /etc/login.defs
 
 ### 2.2.36
 ```bash
-setdef GID_MIN 6000
+sudo nano /etc/login.defs
+// поменять MIN_UID = 6000
 sudo groupadd configgroup1
 getent group configgroup1
 sudo groupdel configgroup1
@@ -417,8 +418,8 @@ sudo cp -a /etc/login.defs.orig /etc/login.defs
 
 ### 2.2.37
 ```bash
-setdef SYS_GID_MIN 700
-setdef SYS_GID_MAX 750
+sudo nano /etc/login.defs SYS_GID_MIN 700
+sudo nano /etc/login.defs SYS_GID_MAX 750
 sudo groupadd -r sysgroup1
 sudo groupadd -r sysgroup2
 sudo groupadd -r sysgroup3
@@ -432,7 +433,7 @@ sudo cp -a /etc/login.defs.orig /etc/login.defs
 ### 2.2.38
 ```bash
 grep CREATE_HOME /etc/login.defs
-setdef CREATE_HOME yes
+sudo nano /etc/login.defs CREATE_HOME yes
 sudo useradd homeuser1
 ls -ld /home/homeuser1
 setdef CREATE_HOME no
@@ -445,7 +446,7 @@ sudo cp -a /etc/login.defs.orig /etc/login.defs
 
 ### 2.2.39
 ```bash
-setdef CREATE_HOME yes
+sudo nano /etc/login.defs CREATE_HOME yes
 sudo useradd -r syshome1
 ls -ld /home/syshome1
 sudo useradd -r -m syshome2
@@ -460,7 +461,7 @@ sudo cp -a /etc/login.defs.orig /etc/login.defs
 grep -E '^(UMASK|HOME_MODE)' /etc/login.defs
 sudo useradd -m umaskuser1
 stat -c '%a %n' /home/umaskuser1
-setdef HOME_MODE 0700
+sudo nano /etc/login.defs HOME_MODE 0700
 sudo useradd -m umaskuser2
 stat -c '%a %n' /home/umaskuser2
 sudo userdel -r umaskuser1
@@ -474,7 +475,7 @@ grep USERGROUPS_ENAB /etc/login.defs
 sudo useradd -m ugroup1
 id ugroup1
 getent group ugroup1
-setdef USERGROUPS_ENAB no
+sudo nano /etc/login.defs USERGROUPS_ENAB no
 sudo useradd -m ugroup2
 id ugroup2
 getent group ugroup2
